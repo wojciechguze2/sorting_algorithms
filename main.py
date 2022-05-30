@@ -2,71 +2,70 @@
 from random import randint
 
 
-def selection_sort(unsorted_list: list) -> list:
+def selection_sort(list_of_numbers: list) -> list:
     # iterating over unsorted part of list to find min value and put it to the end of sorted part
+    list_of_numbers_len = len(list_of_numbers)
 
-    unsorted_list_len = len(unsorted_list)
-
-    for i in range(unsorted_list_len):
+    for i in range(list_of_numbers_len):
         minimum_value_j_index = i
 
-        for j in range(i + 1, unsorted_list_len):
-            if unsorted_list[j] < unsorted_list[minimum_value_j_index]:
+        for j in range(i + 1, list_of_numbers_len):
+            if list_of_numbers[j] < list_of_numbers[minimum_value_j_index]:
                 minimum_value_j_index = j
 
-        swap(unsorted_list, i, minimum_value_j_index)
+        swap(list_of_numbers, i, minimum_value_j_index)
 
-    return unsorted_list
+    return list_of_numbers
 
 
-def insertion_sort(unsorted_list: list, n=None) -> list:
+def insertion_sort(list_of_numbers: list, n=None) -> list:
     # comparing n and n + 1 and swapping, calling self recursively n times (n - length of list)
-    unsorted_list_len = len(unsorted_list)
+    list_of_numbers_len = len(list_of_numbers)
 
     if n is None:
-        n = unsorted_list_len - 1
+        n = list_of_numbers_len - 1
 
     if n > 0:
-        insertion_sort(unsorted_list, n - 1)
+        insertion_sort(list_of_numbers, n - 1)
 
-    for i in range(unsorted_list_len - 1):
-        if unsorted_list[i] > unsorted_list[i + 1]:
-            swap(unsorted_list, i, i + 1)
+    for i in range(list_of_numbers_len - 1):
+        if list_of_numbers[i] > list_of_numbers[i + 1]:
+            swap(list_of_numbers, i, i + 1)
 
-    return unsorted_list
+    return list_of_numbers
 
 
-def bubble_sort(unsorted_list: list) -> list:
+def bubble_sort(list_of_numbers: list) -> list:
     # comparing n and n + 1 until list is not sorted
-    unsorted_list_len = len(unsorted_list)
+    list_of_numbers_len = len(list_of_numbers)
 
-    for i in range(unsorted_list_len):
-        for j in range(unsorted_list_len - i - 1):
-            if unsorted_list[j] > unsorted_list[j + 1]:
-                swap(unsorted_list, j, j + 1)
+    for i in range(list_of_numbers_len):
+        for j in range(list_of_numbers_len - i - 1):
+            if list_of_numbers[j] > list_of_numbers[j + 1]:
+                swap(list_of_numbers, j, j + 1)
 
-    return unsorted_list
+    return list_of_numbers
 
 
 # divide and conquer sorting algorithms
 
 
-def quick_sort(unsorted_list: list) -> list:
+def quick_sort(list_of_numbers: list) -> list:
     return []
 
 
-def merge_sort(unsorted_list: list) -> list:
+def merge_sort(list_of_numbers: list) -> list:
     return []
 
 
-def kopiec(unsorted_list: list) -> list:
+def heap_sort(list_of_numbers: list) -> list:
     return []
 
 
 # helping algorithms
 
-def swap(unsorted_list: list, index_1: int, index_2: int):
-    unsorted_list[index_1], unsorted_list[index_2] = unsorted_list[index_2], unsorted_list[index_1]
+def swap(list_of_numbers: list, index_1: int, index_2: int):
+    list_of_numbers[index_1], list_of_numbers[index_2] = list_of_numbers[index_2], list_of_numbers[index_1]
 
 
 test_lists = [
