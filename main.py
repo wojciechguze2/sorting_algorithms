@@ -1,5 +1,7 @@
-# naive sorting algorithms
 from random import randint
+
+
+# naive sorting algorithms
 
 
 def selection_sort(list_of_numbers: list) -> list:
@@ -51,7 +53,19 @@ def bubble_sort(list_of_numbers: list) -> list:
 
 
 def quick_sort(list_of_numbers: list) -> list:
-    return []
+    # (recursively) sorting numbers on the left of pivot and right
+    # removes duplicates
+    list_of_numbers_len = len(list_of_numbers)
+
+    if list_of_numbers_len <= 1:
+        return list_of_numbers
+
+    pivot = list_of_numbers[list_of_numbers_len // 2 - 1]
+
+    left = [n for n in list_of_numbers if n < pivot]
+    right = [n for n in list_of_numbers if n > pivot]
+
+    return quick_sort(left) + [pivot] + quick_sort(right)
 
 
 def merge_sort(list_of_numbers: list) -> list:
@@ -68,14 +82,12 @@ def swap(list_of_numbers: list, index_1: int, index_2: int):
     list_of_numbers[index_1], list_of_numbers[index_2] = list_of_numbers[index_2], list_of_numbers[index_1]
 
 
-test_lists = [
-    [
-        randint(1, 10)
-        for i in range(10)
-    ]
-    for j in range(6)
+test_list = [
+    randint(1, 10)
+    for _ in range(10)
 ]
 
-print(selection_sort(test_lists[0]))
-print(insertion_sort(test_lists[1]))
-print(bubble_sort(test_lists[2]))
+print(selection_sort(test_list))
+print(insertion_sort(test_list))
+print(bubble_sort(test_list))
+print(quick_sort(test_list))
