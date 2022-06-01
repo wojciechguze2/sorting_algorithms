@@ -54,13 +54,13 @@ def bubble_sort(list_of_numbers: list) -> list:
 
 def quick_sort(list_of_numbers: list) -> list:
     # (recursively) sorting numbers on the left of pivot and right
-    # removes duplicates
+    # removes duplicates todo: fix this
     list_of_numbers_len = len(list_of_numbers)
 
     if list_of_numbers_len <= 1:
         return list_of_numbers
 
-    pivot = list_of_numbers[list_of_numbers_len // 2 - 1]
+    pivot = list_of_numbers[list_of_numbers_len // 2]
 
     left = [n for n in list_of_numbers if n < pivot]
     right = [n for n in list_of_numbers if n > pivot]
@@ -69,7 +69,42 @@ def quick_sort(list_of_numbers: list) -> list:
 
 
 def merge_sort(list_of_numbers: list) -> list:
-    return []
+    # split list into left and right half, do the same on each of them, sort, then merge into 1
+    list_of_numbers_len = len(list_of_numbers)
+
+    if list_of_numbers_len > 1:
+        middle = list_of_numbers_len // 2
+
+        left = list_of_numbers[0:middle]
+        right = list_of_numbers[middle:]
+
+        merge_sort(left)
+        merge_sort(right)
+
+        lc, rc, i = 0, 0, 0
+        len_left, len_right = len(left), len(right)
+
+        while lc < len_left and rc < len_right:
+            if left[lc] < right[rc]:
+                list_of_numbers[i] = left[lc]
+                lc += 1
+            else:
+                list_of_numbers[i] = right[rc]
+                rc += 1
+
+            i += 1
+
+        while lc < len_left:
+            list_of_numbers[i] = left[lc]
+            lc += 1
+            i += 1
+
+        while rc < len_right:
+            list_of_numbers[i] = right[rc]
+            rc += 1
+            i += 1
+
+        return list_of_numbers
 
 
 def heap_sort(list_of_numbers: list) -> list:
@@ -83,11 +118,12 @@ def swap(list_of_numbers: list, index_1: int, index_2: int):
 
 
 test_list = [
-    randint(1, 10)
-    for _ in range(10)
+    randint(0, 15)
+    for _ in range(11)
 ]
 
 print(selection_sort(test_list))
 print(insertion_sort(test_list))
 print(bubble_sort(test_list))
 print(quick_sort(test_list))
+print(merge_sort(test_list))
