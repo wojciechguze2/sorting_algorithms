@@ -1,10 +1,10 @@
-# naive sorting algorithms
-
 class Sort:
     """
     def __init__(self, list_of_numbers):
         self.list_of_numbers = list_of_numbers
     """
+
+    # naive sorting algorithms
 
     def selection_sort(self, list_of_numbers: list) -> list:
         # iterating over unsorted part of list to find min value and put it to the end of sorted part
@@ -106,12 +106,16 @@ class Sort:
     def heap_sort(self, list_of_numbers: list) -> list:
         return []
 
+    # other sorting algorithms
+
+    def count_sort(self, list_of_numbers: list) -> list:
+        return []
+
+    def shell_sort(self, list_of_numbers: list) -> list:
+        return []
+
     # helping algorithms
 
     @staticmethod
     def swap(list_of_numbers: list, index_1: int, index_2: int):
         list_of_numbers[index_1], list_of_numbers[index_2] = list_of_numbers[index_2], list_of_numbers[index_1]
-
-
-sorting = Sort()
-print(sorting.quick_sort([1, 2, 3]))
